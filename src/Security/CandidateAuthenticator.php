@@ -95,8 +95,8 @@ class CandidateAuthenticator extends AbstractFormLoginAuthenticator implements P
         if ($targetPath = $this->getTargetPath($request->getSession(), $providerKey)) {
             return new RedirectResponse($targetPath);
         }
-
-        return new RedirectResponse($this->urlGenerator->generate('home'));
+       
+        return new RedirectResponse($this->urlGenerator->generate('candidate_edit', ['id' => $token->getUser()->getId()]));
         //throw new \Exception('TODO: provide a valid redirect inside '.__FILE__);
     }
 
