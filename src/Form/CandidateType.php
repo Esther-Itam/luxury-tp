@@ -89,11 +89,7 @@ class CandidateType extends AbstractType
             ])
             ->add('place_birth')
             ->add('availability')
-            ->add('job_category', EntityType::class, [
-                'class' => JobCategory::class,
-                'choice_label' => 'category',
-                'placeholder' => 'Choose an option',
-            ])
+            
             ->add('experience', ChoiceType::class,[
                 'choices' => [
                     '0-6 months' => true,

@@ -107,10 +107,7 @@ class Candidate implements UserInterface
      */
     private $availability;
 
-    /**
-     * @ORM\Column(type="string", length=255, nullable=true)
-     */
-    private $job_category;
+    
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
@@ -408,17 +405,7 @@ class Candidate implements UserInterface
         return $this;
     }
 
-    public function getJobCategory(): ?string
-    {
-        return $this->job_category;
-    }
-
-    public function setJobCategory(?string $job_category): self
-    {
-        $this->job_category = $job_category;
-
-        return $this;
-    }
+    
 
     public function getExperience(): ?string
     {
