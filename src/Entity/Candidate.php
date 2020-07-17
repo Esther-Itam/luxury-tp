@@ -25,10 +25,6 @@ class Candidate implements UserInterface
      */
     private $email;
 
-    /**
-     * @ORM\Column(type="json")
-     */
-    private $roles = [];
 
     /**
      * @var string The hashed password
@@ -151,6 +147,11 @@ class Candidate implements UserInterface
      */
     private $files;
 
+    /**
+     * @ORM\Column(type="boolean", nullable=true)
+     */
+    private $is_admin;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -183,19 +184,17 @@ class Candidate implements UserInterface
      */
     public function getRoles(): array
     {
-        $roles = $this->roles;
+        
         // guarantee every user at least has ROLE_USER
+        if($this->getIsAdmin()){
+       
+            $roles[] = 'ROLE_ADMIN';
+        }
         $roles[] = 'ROLE_USER';
 
         return array_unique($roles);
     }
 
-    public function setRoles(array $roles): self
-    {
-        $this->roles = $roles;
-
-        return $this;
-    }
 
     /**
      * @see UserInterface
@@ -501,6 +500,18 @@ class Candidate implements UserInterface
     public function setFiles(?string $files): self
     {
         $this->files = $files;
+
+        return $this;
+    }
+
+    public function getIsAdmin(): ?bool
+    {
+        return $this->is_admin;
+    }
+
+    public function setIsAdmin(?bool $is_admin): self
+    {
+        $this->is_admin = $is_admin;
 
         return $this;
     }
