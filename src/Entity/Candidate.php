@@ -149,6 +149,11 @@ class Candidate implements UserInterface
      */
     private $is_admin;
 
+    /**
+     * @ORM\ManyToOne(targetEntity=JobCategory::class, inversedBy="candidates")
+     */
+    private $job_category;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -499,6 +504,18 @@ class Candidate implements UserInterface
     public function setIsAdmin(?bool $is_admin): self
     {
         $this->is_admin = $is_admin;
+
+        return $this;
+    }
+
+    public function getJobCategory(): ?JobCategory
+    {
+        return $this->job_category;
+    }
+
+    public function setJobCategory(?JobCategory $job_category): self
+    {
+        $this->job_category = $job_category;
 
         return $this;
     }

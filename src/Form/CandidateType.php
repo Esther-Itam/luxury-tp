@@ -26,9 +26,9 @@ class CandidateType extends AbstractType
             ->add('isVerified')
             ->add('gender', ChoiceType::class,[
                 'choices' => [
-                    'female' => true,
-                    'male' => true,
-                    'transgender' => true,
+                    'female' => 'female',
+                    'male' => 'male',
+                    'transgender' => 'transgender',
                 ],
             ])
             ->add('first_name')
@@ -85,19 +85,19 @@ class CandidateType extends AbstractType
             ->add('current_location')
             ->add('date_birth', DateType::class, [
                 'widget' => 'single_text',
-                'input'  => 'datetime_immutable',
+                'required'   => false,
             ])
             ->add('place_birth')
             ->add('availability')
             
             ->add('experience', ChoiceType::class,[
                 'choices' => [
-                    '0-6 months' => true,
-                    '6 months - 1 year' => true,
-                    '1-2 years' => true,
-                    '2+ years' => true,
-                    '5+ years' => true,
-                    '10+ years' => true,
+                    '0-6 months' => '0-6 months',
+                    '6 months - 1 year' => '6 months - 1 year',
+                    '1-2 years' => '1-2 years',
+                    '2+ years' => '2+ years',
+                    '5+ years' => '5+ years',
+                    '10+ years' => '10+ years',
                 ],
             ])
             ->add('short_description', TextareaType::class, [
