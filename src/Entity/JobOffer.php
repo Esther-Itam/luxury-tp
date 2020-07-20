@@ -83,12 +83,22 @@ class JobOffer
     private $type_job;
 
     /**
-     * @ORM\ManyToOne(targetEntity=Client::class)
+     * @var \Client
+     *
+     * @ORM\ManyToOne(targetEntity="Client")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="job_offer_id", referencedColumnName="id")
+     * })
      */
     private $job_offer;
 
     /**
-     * @ORM\ManyToOne(targetEntity=JobCategory::class)
+     * @var \JobCategory
+     *
+     * @ORM\ManyToOne(targetEntity="JobCategory")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="category_id", referencedColumnName="id")
+     * })
      */
     private $category;
 

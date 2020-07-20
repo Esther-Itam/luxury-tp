@@ -6,6 +6,7 @@ use App\Repository\CandidateRepository;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Security\Core\User\UserInterface;
+use App\Entity\JobCategory;
 
 /**
  * @ORM\Entity(repositoryClass=CandidateRepository::class)
@@ -150,7 +151,12 @@ class Candidate implements UserInterface
     private $is_admin;
 
     /**
-     * @ORM\ManyToOne(targetEntity=JobCategory::class, inversedBy="candidates")
+     * @var \JobCategory
+     *
+     * @ORM\ManyToOne(targetEntity="JobCategory")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="job_category_id", referencedColumnName="id")
+     * })
      */
     private $job_category;
 

@@ -24,11 +24,6 @@ class JobCategory
      */
     private $category;
 
-    /**
-     * @ORM\OneToMany(targetEntity=Candidate::class, mappedBy="job_category")
-     */
-    private $candidates;
-
     public function __construct()
     {
         $this->candidates = new ArrayCollection();
