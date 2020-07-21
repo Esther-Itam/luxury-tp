@@ -14,6 +14,22 @@ use Symfony\Component\Routing\Annotation\Route;
  * @Route("/job_offer")
  */
 
+class JobOfferController extends AbstractController
+{
+    /**
+     * @Route("/", name="job_offer_index", methods={"GET"})
+     */
+    public function index(JobOfferRepository $jobOfferRepository): Response
+    {
+        return $this->render('job_offer/index.html.twig', [
+            'job_offers' => $jobOfferRepository->findAll(),
+        ]);
+    }
+
+    /**
+     * @Route("/new", name="job_offer_new", methods={"GET","POST"})
+     */
+    public function new(Request $request): Response
     {
         $jobOffer = new JobOffer();
         $form = $this->createForm(JobOfferType::class, $jobOffer);
@@ -77,3 +93,4 @@ use Symfony\Component\Routing\Annotation\Route;
         return $this->redirectToRoute('job_offer_index');
     }
 }
+
