@@ -26,7 +26,7 @@ class JobOfferType extends AbstractType
             ->add('created_at')
             ->add('type_job')
             ->add('job_offer')
-            ->add('category', JobTypeType::class)
+            ->add('category')
         ;
     }
 
