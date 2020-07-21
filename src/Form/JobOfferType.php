@@ -24,9 +24,9 @@ class JobOfferType extends AbstractType
             ->add('closing_at')
             ->add('salary')
             ->add('created_at')
-            ->add('type_job')
-            ->add('job_offer')
-            ->add('category')
+            /* ->add('type_job')
+            ->add('job_offer') */
+            /* ->add('category') */
         ;
     }
 
